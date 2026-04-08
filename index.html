@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkyPeek — Weather Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">☁️ SkyPeek</div>
+      <div class="header-right">
+        <span id="currentDate" class="date-chip"></span>
+      </div>
+    </header>
+
+    <!-- SEARCH -->
+    <section class="search-section">
+      <h1 class="headline">What's the sky like<br/><span class="highlight">where you are?</span></h1>
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="cityInput" placeholder="Enter a city name…" autocomplete="off"/>
+        <button id="searchBtn" class="search-btn">Go!</button>
+      </div>
+      <div class="quick-cities">
+        <span class="qc-label">Try:</span>
+        <button class="qc-btn" data-city="Delhi">Delhi</button>
+        <button class="qc-btn" data-city="Mumbai">Mumbai</button>
+        <button class="qc-btn" data-city="Prayagraj">Prayagraj</button>
+        <button class="qc-btn" data-city="London">London</button>
+        <button class="qc-btn" data-city="Tokyo">Tokyo</button>
+      </div>
+    </section>
+
+    <!-- ERROR -->
+    <div class="error-box" id="errorBox">
+      😵 Oops! City not found. Try another name.
+    </div>
+
+    <!-- LOADING -->
+    <div class="loader" id="loader">
+      <div class="loader-ring"></div>
+      <p>Fetching the skies…</p>
+    </div>
+
+    <!-- WEATHER RESULTS -->
+    <section class="results" id="results">
+
+      <!-- MAIN CARD -->
+      <div class="main-card" id="mainCard">
+        <div class="main-left">
+          <div class="city-name" id="cityName">—</div>
+          <div class="country-chip" id="countryChip"></div>
+          <div class="weather-emoji" id="weatherEmoji">🌤️</div>
+          <div class="temp-display">
+            <span class="temp-big" id="tempBig">—</span>
+            <div class="temp-toggle">
+              <button class="unit-btn active" id="btnC">°C</button>
+              <button class="unit-btn" id="btnF">°F</button>
+            </div>
+          </div>
+          <div class="description" id="description">—</div>
+          <div class="feels-like" id="feelsLike"></div>
+        </div>
+        <div class="main-right">
+          <div class="stat-pill">
+            <span class="pill-icon">💧</span>
+            <div>
+              <div class="pill-label">Humidity</div>
+              <div class="pill-val" id="humidity">—</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="pill-icon">💨</span>
+            <div>
+              <div class="pill-label">Wind</div>
+              <div class="pill-val" id="wind">—</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="pill-icon">👁️</span>
+            <div>
+              <div class="pill-label">Visibility</div>
+              <div class="pill-val" id="visibility">—</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="pill-icon">🌡️</span>
+            <div>
+              <div class="pill-label">Pressure</div>
+              <div class="pill-val" id="pressure">—</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="pill-icon">🌅</span>
+            <div>
+              <div class="pill-label">Sunrise</div>
+              <div class="pill-val" id="sunrise">—</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="pill-icon">🌇</span>
+            <div>
+              <div class="pill-label">Sunset</div>
+              <div class="pill-val" id="sunset">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-DAY FORECAST -->
+      <div class="forecast-section">
+        <h2 class="section-title">5-Day Forecast 📅</h2>
+        <div class="forecast-row" id="forecastRow"></div>
+      </div>
+
+      <!-- EXTRA STATS -->
+      <div class="extra-stats">
+        <h2 class="section-title">Air & More 🌬️</h2>
+        <div class="extra-grid">
+          <div class="extra-card" id="uvCard">
+            <div class="extra-icon">☀️</div>
+            <div class="extra-label">UV Index</div>
+            <div class="extra-val" id="uvVal">—</div>
+            <div class="extra-sub" id="uvSub"></div>
+          </div>
+          <div class="extra-card">
+            <div class="extra-icon">🌡️</div>
+            <div class="extra-label">Min / Max</div>
+            <div class="extra-val" id="minMax">—</div>
+            <div class="extra-sub">Today's range</div>
+          </div>
+          <div class="extra-card">
+            <div class="extra-icon">☁️</div>
+            <div class="extra-label">Cloud Cover</div>
+            <div class="extra-val" id="clouds">—</div>
+            <div class="extra-sub">% of sky covered</div>
+          </div>
+          <div class="extra-card">
+            <div class="extra-icon">🌐</div>
+            <div class="extra-label">Coordinates</div>
+            <div class="extra-val" id="coords">—</div>
+            <div class="extra-sub">Lat / Lon</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div><!-- .app -->
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
