@@ -2,6 +2,7 @@
 
 A colorful, interactive weather dashboard built with **HTML, CSS & Vanilla JavaScript**, using the **OpenWeatherMap API**.
 
+Test NOW - https://dev-priyanshu-tiwari.github.io/SkyPeek/
 
 ---
 
